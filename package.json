@@ -1,0 +1,36 @@
+{
+    "name": "choir-file",
+    "version": "1.0.0",
+    "description": "A choir file app for choristers and music directors",
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tony-eneh/choir-file.git"
+    },
+    "keywords": [
+        "choir",
+        "choral",
+        "music",
+        "score",
+        "solfa",
+        "church",
+        "mass",
+        "liturgy"
+    ],
+    "author": "Tony Eneh anthony.u.eneh@gmail.com",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tony-eneh/choir-file/issues"
+    },
+    "homepage": "https://github.com/tony-eneh/choir-file#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "chai": "^4.2.0",
+        "eslint": "^6.3.0",
+        "mocha": "^6.2.0"
+    }
+}
