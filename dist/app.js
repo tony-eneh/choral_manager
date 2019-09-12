@@ -8,28 +8,8 @@ var _express = _interopRequireDefault(require("express"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["server successfully started. Listening on port 3000"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["error: ", ""]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["successful connected to database on port ", ""]);
+  var data = _taggedTemplateLiteral(["server successfully started. Listening on port 3000"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -41,14 +21,19 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 //connect to database
-_config.dbConnection.connect() // eslint-disable-next-line no-undef
-.then(function (port) {
-  return console.log(_templateObject(), port);
-}) // eslint-disable-next-line no-undef
-["catch"](function (err) {
-  return console.log(_templateObject2(), err);
-});
+_config.dbConnection.connect(function (err, res) {
+  if (err) {
+    console.log('error connecting to choir file database', err);
+    return;
+  }
 
-var app = (0, _express["default"])();
-app.use('/', _api["default"]);
-app.listen(3000, console.log(_templateObject3()));
+  console.log('successfully connected to db');
+}); // eslint-disable-next-line no-undef
+//.then(port=>console.log`successful connected to database on port ${port}`)
+// eslint-disable-next-line no-undef
+//.catch(err=>console.log`error: ${err}`);
+
+
+var app = (0, _express["default"])(); // app.use('/', apiRouter);
+
+app.listen(3000, console.log(_templateObject()));
