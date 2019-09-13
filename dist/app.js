@@ -34,6 +34,8 @@ _config.dbConnection.connect(function (err, res) {
 //.catch(err=>console.log`error: ${err}`);
 
 
-var app = (0, _express["default"])(); // app.use('/', apiRouter);
+var app = (0, _express["default"])(); // console.log(apiRouter);
+
+app.use('/api', _api["default"]); // app.use('/', (req, res) => { res.send('yesso! you got our static page') });
 
 app.listen(3000, console.log(_templateObject()));

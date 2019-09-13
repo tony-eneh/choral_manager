@@ -18,6 +18,9 @@ dbConnection.connect((err, res) => {
 
 const app = express();
 
-// app.use('/', apiRouter);
+// console.log(apiRouter);
+app.use('/api', apiRouter);
+
+// app.use('/', (req, res) => { res.send('yesso! you got our static page') });
 
 app.listen(3000, console.log `server successfully started. Listening on port 3000`);
