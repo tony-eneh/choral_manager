@@ -21,7 +21,7 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 //connect to database
-_config.dbConnection.connect(function (err, res) {
+_config.dbConnection.connect(function (err) {
   if (err) {
     console.log('error connecting to choir file database', err);
     return;
