@@ -4,7 +4,7 @@ import { dbConnection } from './config';
 import express from 'express';
 
 //connect to database
-dbConnection.connect((err, res) => {
+dbConnection.connect((err) => {
     if (err) {
         console.log('error connecting to choir file database', err);
         return;
