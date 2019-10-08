@@ -1,14 +1,20 @@
 import model from './model';
+import { db } from '../../config';
 
 
 console.log('entered /api/song/controller.js');
 
-export const fetchSong = (req, res) => {
+export const getSong = (req, res) => {
     console.log('SEE THE REQ PARAM HERE', req.params.id);
     res.send('we got it loud and clear!');
 };
 
-export const fetchAllSongs = (req, res) => {
+export const getSongs = (req, res) => {
+    model.getSongs(JSON.parse(req.body), (err, data) => {
+        if (err) console.log `${err}`;
+        res.send(data);
+        db.close();
+    });
 
 };
 
