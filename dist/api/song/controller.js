@@ -5,14 +5,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.deleteSong = exports.updateSong = exports.createSong = exports.getSongs = exports.getSong = void 0;
 
-var _model = _interopRequireDefault(require("./model"));
+var model = _interopRequireWildcard(require("./model"));
 
 var _config = require("../../config");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([" DATA FETCHED ", ""]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["", ""]);
+  var data = _taggedTemplateLiteral([" ERROR FROM MODEL ", ""]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -33,11 +45,11 @@ var getSong = function getSong(req, res) {
 exports.getSong = getSong;
 
 var getSongs = function getSongs(req, res) {
-  _model["default"].getSongs(JSON.parse(req.body), function (err, data) {
+  console.log(req.body);
+  model.getSongs(req.body ? JSON.parse(req.body) : {}, function (err, data) {
     if (err) console.log(_templateObject(), err);
-    res.send(data);
-
-    _config.db.close();
+    console.log(_templateObject2(), data);
+    res.send(data); // db.close();
   });
 };
 

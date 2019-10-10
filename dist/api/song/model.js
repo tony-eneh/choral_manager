@@ -11,11 +11,19 @@ var _config = require("../../config");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var dbo = _config.db.db(_config.DB_NAME); //CRUD operations
-
+var dbo; //connect to database
+//CRUD operations
 
 var getSongs = function getSongs(query, done) {
-  dbo.getCollection('songs').find(query, done);
+  _config.dbConnection.connect(function (err, db) {
+    if (err) {
+      console.log('error connecting to choir file database', err);
+      return;
+    }
+
+    console.log('successfully connected to db', db);
+    db.collection('songs').find(query).toArray(done);
+  });
 };
 
 exports.getSongs = getSongs;

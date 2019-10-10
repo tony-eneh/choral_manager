@@ -1,16 +1,9 @@
 import apiRouter from './api';
-import { dbConnection } from './config';
+// import { dbConnection } from './config';
 
 import express from 'express';
 
-//connect to database
-dbConnection.connect((err) => {
-    if (err) {
-        console.log('error connecting to choir file database', err);
-        return;
-    }
-    console.log('successfully connected to db');
-});
+
 // eslint-disable-next-line no-undef
 //.then(port=>console.log`successful connected to database on port ${port}`)
 // eslint-disable-next-line no-undef

@@ -1,12 +1,26 @@
 import mongodb from 'mongodb';
-import { DB_NAME, db } from '../../config';
+import { DB_NAME, dbConnection } from '../../config';
 
-const dbo = db.db(DB_NAME);
+let dbo;
+
+//connect to database
+
+
+
+
 
 //CRUD operations
 
 export const getSongs = (query, done) => {
-    dbo.getCollection('songs').find(query, done);
+    dbConnection.connect((err, db) => {
+        if (err) {
+            console.log('error connecting to choir file database', err);
+            return;
+        }
+        console.log('successfully connected to db', db);
+        db.collection('songs').find(query).toArray(done);
+    });
+
 };
 
 export const getSong = (id, done) => {

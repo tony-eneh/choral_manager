@@ -9,12 +9,13 @@ const mongoClient = mongodb.MongoClient;
 export const dbConnection = {
     connect: (done) => {
         mongoClient.connect(DB_URL_STRING, (err, db) => {
-            if (err) done(err);
-            connectedDB = db;
+            // if (err) done(err);
+            // connectedDB = db;
+            return done(err, db.db(DB_NAME));
         });
     }
 };
 
-export const db = connectedDB;
+// export const db = connectedDB;
 
 export const DB_NAME = 'choir-file';

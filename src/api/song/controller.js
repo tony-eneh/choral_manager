@@ -1,4 +1,4 @@
-import model from './model';
+import * as model from './model';
 import { db } from '../../config';
 
 
@@ -10,10 +10,12 @@ export const getSong = (req, res) => {
 };
 
 export const getSongs = (req, res) => {
-    model.getSongs(JSON.parse(req.body), (err, data) => {
-        if (err) console.log `${err}`;
+    console.log(req.body);
+    model.getSongs(req.body ? JSON.parse(req.body) : {}, (err, data) => {
+        if (err) console.log ` ERROR FROM MODEL ${err}`;
+        console.log ` DATA FETCHED ${data}`;
         res.send(data);
-        db.close();
+        // db.close();
     });
 
 };
