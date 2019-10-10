@@ -15,9 +15,9 @@ var router = _express["default"].Router();
 
 router.get('/songs/:id', _controller.getSong);
 router.get('/songs', _controller.getSongs);
-router.put('/songs', _controller.updateSong);
+router.put('/songs/:id', _controller.updateSong);
 router.post('/songs', _controller.createSong);
-router["delete"]('/songs', _controller.deleteSong);
+router["delete"]('/songs/:id', _controller.deleteSong);
 console.log('successfully parsed /api/song/route.js');
 var _default = router;
 exports["default"] = _default;
