@@ -46,7 +46,7 @@ exports.getSong = getSong;
 
 var getSongs = function getSongs(req, res) {
   console.log(req.body);
-  model.getSongs(req.body ? JSON.parse(req.body) : {}, function (err, data) {
+  model.getSongs(req.body ? JSON.parse(req.body) : req.query || {}, function (err, data) {
     if (err) console.log(_templateObject(), err);
     console.log(_templateObject2(), data);
     res.send(data); // db.close();
