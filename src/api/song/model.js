@@ -46,7 +46,18 @@ export const getSong = (query, done) => {
 };
 
 export const createSong = (query, done) => {
-    dbo.getCollection('songs').insertOne(query, done);
+    dbConnection.connect((err, db) => {
+        if (err) {
+            console.log('error connecting to choir file database', err);
+            return;
+        }
+        console.log('successfully connected to db');
+
+        //normalize ID if present in query
+        if (query._id) { query._id = normalizeID(query._id) }
+
+        return db.collection('songs').insertOne(query, done);
+    });
 };
 
 export const updateSong = (query, object, done) => {

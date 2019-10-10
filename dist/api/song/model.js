@@ -61,7 +61,20 @@ var getSong = function getSong(query, done) {
 exports.getSong = getSong;
 
 var createSong = function createSong(query, done) {
-  dbo.getCollection('songs').insertOne(query, done);
+  _config.dbConnection.connect(function (err, db) {
+    if (err) {
+      console.log('error connecting to choir file database', err);
+      return;
+    }
+
+    console.log('successfully connected to db'); //normalize ID if present in query
+
+    if (query._id) {
+      query._id = normalizeID(query._id);
+    }
+
+    return db.collection('songs').insertOne(query, done);
+  });
 };
 
 exports.createSong = createSong;

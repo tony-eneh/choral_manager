@@ -21,14 +21,19 @@ export const getSongs = (req, res) => {
 
     model.getSongs(query, (err, data) => {
         if (err) console.log ` ERROR FROM MODEL ${err}`;
-        // console.log ` DATA FETCHED ${data}`;
         res.send(data);
-        // db.close();
     });
 };
 
 export const createSong = (req, res) => {
 
+    //create query object
+    let query = req.body ? JSON.parse(req.body) : req.query || {};
+
+    model.createSong(query, (err, data) => {
+        if (err) console.log ` ERROR FROM MODEL CREATING ${err}`;
+        res.send(data.insertedId);
+    })
 };
 
 export const updateSong = (req, res) => {

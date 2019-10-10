@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get('/songs/:id', getSong);
 router.get('/songs', getSongs);
-router.put('/songs', createSong);
-router.post('/songs', updateSong);
+router.put('/songs', updateSong);
+router.post('/songs', createSong);
 router.delete('/songs', deleteSong);
 
 console.log('successfully parsed /api/song/route.js')
