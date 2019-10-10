@@ -1,13 +1,15 @@
 import mongodb from 'mongodb';
 import { DB_NAME, dbConnection } from '../../config';
+import { normalize } from 'path';
 
 let dbo;
+let ObjectID = mongodb.ObjectID;
+console.log(ObjectID)
+    //connect to database
 
-//connect to database
 
 
-
-
+let normalizeID = (idString) => ObjectID(idString);
 
 //CRUD operations
 
@@ -17,16 +19,30 @@ export const getSongs = (query, done) => {
             console.log('error connecting to choir file database', err);
             return;
         }
-        console.log('successfully connected to db', db);
+        console.log('successfully connected to db');
+
+        //normalize ID if present in query
+        if (query._id) { query._id = normalizeID(query._id) }
+
         db.collection('songs').find(query).toArray(done);
     });
 
 };
 
-export const getSong = (id, done) => {
-    if (dbo) {
-        return dbo.getCollection('songs').findOne({ _id: id }, done)
-    }
+export const getSong = (query, done) => {
+    dbConnection.connect((err, db) => {
+        if (err) {
+            console.log('error connecting to choir file database', err);
+            return;
+        }
+        console.log('successfully connected to db');
+
+        //normalize ID if present in query
+        if (query._id) { query._id = normalizeID(query._id) }
+
+        return db.collection('songs').findOne(query, done);
+    });
+
 };
 
 export const createSong = (query, done) => {
