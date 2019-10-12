@@ -5,7 +5,7 @@ import express from 'express';
 
 const apiRouter = express.Router();
 
-// apiRouter.use(fileRouter);
+apiRouter.use(fileRouter);
 apiRouter.use(songRouter);
 // apiRouter.use(userRouter);
 

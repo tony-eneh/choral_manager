@@ -15,9 +15,9 @@ var _express = _interopRequireDefault(require("express"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var apiRouter = _express["default"].Router(); // apiRouter.use(fileRouter);
+var apiRouter = _express["default"].Router();
 
-
+apiRouter.use(_file["default"]);
 apiRouter.use(_song["default"]); // apiRouter.use(userRouter);
 
 console.log('successfully parsed /api/index.js');
