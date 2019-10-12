@@ -17,8 +17,7 @@ export const getSong = (req, res) => {
 export const getSongs = (req, res) => {
 
     //create query object
-    let query = req.body ? JSON.parse(req.body) : req.query || {};
-
+    let query = req.body ? req.body : req.query || {};
     model.getSongs(query, (err, data) => {
         if (err) console.log ` ERROR FROM MODEL ${err}`;
         res.send(data);
@@ -28,7 +27,7 @@ export const getSongs = (req, res) => {
 export const createSong = (req, res) => {
 
     //create query object
-    let query = req.body ? JSON.parse(req.body) : req.query || {};
+    let query = req.body ? req.body : req.query || {};
 
     model.createSong(query, (err, data) => {
         if (err) console.log ` ERROR FROM MODEL CREATING: ${err}`;
@@ -39,10 +38,10 @@ export const createSong = (req, res) => {
 export const updateSong = (req, res) => {
 
     //create query object
-    console.log `req.body ${req.body}`;
     let object = req.body ? req.body : req.query || {};
     let query = { _id: req.params.id };
-    console.log `object in controller ${object}`;
+    // console.log `object in controller ${object}`;
+    // console.log `req.body ${req.body}`;
     delete object._id;
     model.updateSong(query, object, (err, data) => {
         if (err) console.log ` ERROR FROM MODEL UPDATING: ${err}`;

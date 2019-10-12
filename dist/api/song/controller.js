@@ -11,28 +11,8 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _templateObject6() {
-  var data = _taggedTemplateLiteral([" ERROR FROM MODEL UPDATING: ", ""]);
-
-  _templateObject6 = function _templateObject6() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject5() {
-  var data = _taggedTemplateLiteral(["object in controller ", ""]);
-
-  _templateObject5 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["req.body ", ""]);
+  var data = _taggedTemplateLiteral([" ERROR FROM MODEL UPDATING: ", ""]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -90,7 +70,7 @@ exports.getSong = getSong;
 
 var getSongs = function getSongs(req, res) {
   //create query object
-  var query = req.body ? JSON.parse(req.body) : req.query || {};
+  var query = req.body ? req.body : req.query || {};
   model.getSongs(query, function (err, data) {
     if (err) console.log(_templateObject2(), err);
     res.send(data);
@@ -101,7 +81,7 @@ exports.getSongs = getSongs;
 
 var createSong = function createSong(req, res) {
   //create query object
-  var query = req.body ? JSON.parse(req.body) : req.query || {};
+  var query = req.body ? req.body : req.query || {};
   model.createSong(query, function (err, data) {
     if (err) console.log(_templateObject3(), err);
     res.send(data.insertedId);
@@ -112,15 +92,15 @@ exports.createSong = createSong;
 
 var updateSong = function updateSong(req, res) {
   //create query object
-  console.log(_templateObject4(), req.body);
   var object = req.body ? req.body : req.query || {};
   var query = {
     _id: req.params.id
-  };
-  console.log(_templateObject5(), object);
+  }; // console.log `object in controller ${object}`;
+  // console.log `req.body ${req.body}`;
+
   delete object._id;
   model.updateSong(query, object, function (err, data) {
-    if (err) console.log(_templateObject6(), err);
+    if (err) console.log(_templateObject4(), err);
     res.send(data);
   });
 };
