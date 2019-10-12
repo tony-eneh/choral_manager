@@ -51,4 +51,11 @@ export const updateSong = (req, res) => {
 
 export const deleteSong = (req, res) => {
 
+    //create query object
+    let query = { _id: req.params.id };
+
+    model.deleteSong(query, (err, data) => {
+        if (err) console.log ` ERROR FROM MODEL DELETING: ${err}`;
+        res.send(data);
+    })
 };

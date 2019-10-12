@@ -78,6 +78,17 @@ export const updateSong = (query, object, done) => {
     })
 };
 
-export const deleteSong = (id, done) => {
-    dbo.getCollection('songs').deleteOne({ _id: id }, done);
+export const deleteSong = (query, done) => {
+    dbConnection.connect((err, db) => {
+        if (err) {
+            console.log('error connecting to choir file database', err);
+            return;
+        }
+        console.log('successfully connected to db');
+
+        //normalize ID if present in query
+        if (query._id) { query._id = normalizeID(query._id) }
+
+        return db.collection('songs').deleteOne(query, done);
+    })
 };
