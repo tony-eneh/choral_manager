@@ -9,7 +9,7 @@ const apiRouter = express.Router();
 apiRouter.use(fileRouter);
 apiRouter.use(songRouter);
 apiRouter.use(selectionRouter);
-// apiRouter.use(userRouter);
+apiRouter.use(userRouter);
 
 console.log('successfully parsed /api/index.js')
 
