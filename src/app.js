@@ -2,6 +2,7 @@ import apiRouter from './api';
 // import { dbConnection } from './config';
 
 import express from 'express';
+import bodyParser from 'body-parser';
 
 
 // eslint-disable-next-line no-undef
@@ -10,6 +11,9 @@ import express from 'express';
 //.catch(err=>console.log`error: ${err}`);
 
 const app = express();
+
+//intergrate middlewares
+app.use(bodyParser());
 
 // console.log(apiRouter);
 app.use('/api', apiRouter);
