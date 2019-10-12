@@ -1,13 +1,13 @@
 import express from 'express';
-import { fetchSelection, fetchAllSelections, createSelection, updateSelection, deleteSelection } from './controller';
+import { getSelection, getSelections, createSelection, updateSelection, deleteSelection } from './controller';
 
 const router = express.Router();
 
-router.get('/selections/:id', fetchSelection);
-router.get('/selections', fetchAllSelections);
-router.put('/selections', createSelection);
-router.post('/selections', updateSelection);
-router.delete('/selections', deleteSelection);
+router.get('/selections/:id', getSelection);
+router.get('/selections', getSelections);
+router.put('/selections/:id', updateSelection);
+router.post('/selections', createSelection);
+router.delete('/selections/:id', deleteSelection);
 
 console.log('successfully parsed /api/selection/route.js')
 
