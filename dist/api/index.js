@@ -21,8 +21,8 @@ var apiRouter = _express["default"].Router();
 
 apiRouter.use(_file["default"]);
 apiRouter.use(_song["default"]);
-apiRouter.use(_selection["default"]); // apiRouter.use(userRouter);
-
+apiRouter.use(_selection["default"]);
+apiRouter.use(_user["default"]);
 console.log('successfully parsed /api/index.js');
 var _default = apiRouter;
 exports["default"] = _default;
