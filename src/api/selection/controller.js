@@ -1,31 +1,61 @@
-import model from './model';
-import { db } from '../../config';
+import * as model from './model';
 
 
-console.log('entered /api/selections/controller.js');
+console.log('entered /api/selection/controller.js');
 
 export const getSelection = (req, res) => {
-    console.log('SEE THE REQ PARAM HERE', req.params.id);
-    res.send('we got it loud and clear!');
+
+    //create query object
+    let query = { _id: req.params.id };
+
+    model.getSelection(query, (err, data) => {
+        if (err) console.log ` ERROR FROM MODEL ${err}`;
+        res.send(data);
+    });
 };
 
 export const getSelections = (req, res) => {
-    model.getSelections(JSON.parse(req.body), (err, data) => {
-        if (err) console.log `${err}`;
-        res.send(data);
-        db.close();
-    });
 
+    //create query object
+    let query = req.body ? req.body : req.query || {};
+    model.getSelections(query, (err, data) => {
+        if (err) console.log ` ERROR FROM MODEL ${err}`;
+        res.send(data);
+    });
 };
 
 export const createSelection = (req, res) => {
 
+    //create query object
+    let query = req.body ? req.body : req.query || {};
+
+    model.createSelection(query, (err, data) => {
+        if (err) console.log ` ERROR FROM MODEL CREATING: ${err}`;
+        res.send(data.insertedId);
+    })
 };
 
 export const updateSelection = (req, res) => {
 
+    //create query object
+    let object = req.body ? req.body : req.query || {};
+    let query = { _id: req.params.id };
+    // console.log `object in controller ${object}`;
+    // console.log `req.body ${req.body}`;
+    delete object._id;
+    model.updateSelection(query, object, (err, data) => {
+        if (err) console.log ` ERROR FROM MODEL UPDATING: ${err}`;
+        res.send(data);
+    })
 };
 
 export const deleteSelection = (req, res) => {
 
+    //create query object
+    let query = { _id: req.params.id };
+
+    model.deleteSelection(query, (err, data) => {
+        if (err) console.log ` ERROR FROM MODEL DELETING: ${err}`;
+        res.send(data);
+    })
 };
