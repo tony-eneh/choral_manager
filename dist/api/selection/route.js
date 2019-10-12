@@ -13,11 +13,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var router = _express["default"].Router();
 
-router.get('/songs/:id', _controller.getSong);
-router.get('/songs', _controller.getSongs);
-router.put('/songs/:id', _controller.updateSong);
-router.post('/songs', _controller.createSong);
-router["delete"]('/songs/:id', _controller.deleteSong);
-console.log('successfully parsed /api/song/route.js');
+router.get('/selections/:id', _controller.fetchSelection);
+router.get('/selections', _controller.fetchAllSelections);
+router.put('/selections', _controller.createSelection);
+router.post('/selections', _controller.updateSelection);
+router["delete"]('/selections', _controller.deleteSelection);
+console.log('successfully parsed /api/selection/route.js');
 var _default = router;
 exports["default"] = _default;

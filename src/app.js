@@ -1,16 +1,10 @@
 import apiRouter from './api';
-import { dbConnection } from './config';
+// import { dbConnection } from './config';
 
 import express from 'express';
+import bodyParser from 'body-parser';
 
-//connect to database
-dbConnection.connect((err, res) => {
-    if (err) {
-        console.log('error connecting to choir file database', err);
-        return;
-    }
-    console.log('successfully connected to db');
-});
+
 // eslint-disable-next-line no-undef
 //.then(port=>console.log`successful connected to database on port ${port}`)
 // eslint-disable-next-line no-undef
@@ -18,6 +12,12 @@ dbConnection.connect((err, res) => {
 
 const app = express();
 
-// app.use('/', apiRouter);
+//intergrate middlewares
+app.use(bodyParser());
+
+// console.log(apiRouter);
+app.use('/api', apiRouter);
+
+// app.use('/', (req, res) => { res.send('yesso! you got our static page') });
 
 app.listen(3000, console.log `server successfully started. Listening on port 3000`);
