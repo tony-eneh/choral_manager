@@ -3,6 +3,7 @@ import apiRouter from './api';
 
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 
 // eslint-disable-next-line no-undef
@@ -14,6 +15,7 @@ const app = express();
 
 //intergrate middlewares
 app.use(bodyParser());
+app.use(cors());
 
 // console.log(apiRouter);
 app.use('/api', apiRouter);
