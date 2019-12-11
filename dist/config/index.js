@@ -9,7 +9,21 @@ var _mongodb = _interopRequireDefault(require("mongodb"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var DB_URL_STRING = 'mongodb://localhost:27017/choir-file';
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["process.env ", ""]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var DB_URL_STRING = process.env.DB_URL_STRING;
+console.log('DB_URL_STRING: ' + process.env.DB_URL_STRING);
+console.log(_templateObject(), process.env);
 var connectedDB;
 var mongoClient = _mongodb["default"].MongoClient; // mongoClient.on('connect', console.log);
 

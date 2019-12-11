@@ -1,6 +1,8 @@
 import mongodb from 'mongodb';
 
-const DB_URL_STRING = 'mongodb://localhost:27017/choir-file';
+const DB_URL_STRING = process.env.DB_URL_STRING;
+console.log('DB_URL_STRING: '+process.env.DB_URL_STRING);
+console.log`process.env ${process.env}`;
 let connectedDB;
 const mongoClient = mongodb.MongoClient;
 

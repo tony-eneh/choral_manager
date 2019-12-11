@@ -1,5 +1,7 @@
 "use strict";
 
+require("dotenv/config");
+
 var _api = _interopRequireDefault(require("./api"));
 
 var _express = _interopRequireDefault(require("express"));
@@ -26,6 +28,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 //.then(port=>console.log`successful connected to database on port ${port}`)
 // eslint-disable-next-line no-undef
 //.catch(err=>console.log`error: ${err}`);
+// console.log(`result.parsed.DB_URL_STRING ${result.parsed.DB_URL_STRING}`)
 var app = (0, _express["default"])(); //intergrate middlewares
 
 app.use((0, _bodyParser["default"])());

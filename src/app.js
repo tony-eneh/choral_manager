@@ -1,3 +1,6 @@
+// it's important to import the dotenv/config before the api endpoints
+// application breaks otherwise
+import 'dotenv/config';
 import apiRouter from './api';
 // import { dbConnection } from './config';
 
@@ -10,6 +13,8 @@ import cors from 'cors';
 //.then(port=>console.log`successful connected to database on port ${port}`)
 // eslint-disable-next-line no-undef
 //.catch(err=>console.log`error: ${err}`);
+
+// console.log(`result.parsed.DB_URL_STRING ${result.parsed.DB_URL_STRING}`)
 
 const app = express();
 
