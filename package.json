@@ -30,6 +30,9 @@
     },
     "homepage": "https://github.com/tony-eneh/choir_manager#readme",
     "dependencies": {
+        "@babel/cli": "^7.7.5",
+        "@babel/core": "^7.6.0",
+        "@babel/preset-env": "^7.6.0",
         "body-parser": "^1.19.0",
         "cors": "^2.8.5",
         "dotenv": "^8.2.0",
@@ -37,9 +40,6 @@
         "mongodb": "^3.3.0-beta2"
     },
     "devDependencies": {
-        "@babel/core": "^7.6.0",
-        "@babel/preset-env": "^7.6.0",
-        "@babel/cli": "^7.6.0",
         "chai": "^4.2.0",
         "eslint": "^6.3.0",
         "mocha": "^6.2.0"
