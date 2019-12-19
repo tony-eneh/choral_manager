@@ -16,6 +16,8 @@ import cors from 'cors';
 
 // console.log(`result.parsed.MONGODB_URI ${result.parsed.MONGODB_URI}`)
 
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
 //intergrate middlewares
@@ -27,4 +29,4 @@ app.use('/api', apiRouter);
 
 app.use('/', (req, res) => { res.send('yesso! you got our home page') });
 
-app.listen(process.env.PORT || 3000, console.log `server successfully started. Listening on port ${process.env.PORT}`);
+app.listen(PORT, console.log `server successfully started. Listening on port ${PORT}`);

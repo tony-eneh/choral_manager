@@ -21,15 +21,15 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var DB_URL_STRING = process.env.DB_URL_STRING;
-console.log('DB_URL_STRING: ' + process.env.DB_URL_STRING);
+var MONGODB_URI = process.env.MONGODB_URI;
+console.log('MONGODB_URI: ' + process.env.MONGODB_URI);
 console.log(_templateObject(), process.env);
 var connectedDB;
 var mongoClient = _mongodb["default"].MongoClient; // mongoClient.on('connect', console.log);
 
 var dbConnection = {
   connect: function connect(done) {
-    mongoClient.connect(DB_URL_STRING, function (err, db) {
+    mongoClient.connect(MONGODB_URI, function (err, db) {
       // if (err) done(err);
       // connectedDB = db;
       return done(err, db.db(DB_NAME));

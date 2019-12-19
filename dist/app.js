@@ -13,7 +13,7 @@ var _cors = _interopRequireDefault(require("cors"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["server successfully started. Listening on port 3000"]);
+  var data = _taggedTemplateLiteral(["server successfully started. Listening on port ", ""]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -28,7 +28,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 //.then(port=>console.log`successful connected to database on port ${port}`)
 // eslint-disable-next-line no-undef
 //.catch(err=>console.log`error: ${err}`);
-// console.log(`result.parsed.DB_URL_STRING ${result.parsed.DB_URL_STRING}`)
+// console.log(`result.parsed.MONGODB_URI ${result.parsed.MONGODB_URI}`)
 var app = (0, _express["default"])(); //intergrate middlewares
 
 app.use((0, _bodyParser["default"])());
@@ -38,4 +38,4 @@ app.use('/api', _api["default"]);
 app.use('/', function (req, res) {
   res.send('yesso! you got our home page');
 });
-app.listen(process.env.PORT || 3000, console.log(_templateObject()));
+app.listen(process.env.PORT || 3000, console.log(_templateObject(), process.env.PORT));
