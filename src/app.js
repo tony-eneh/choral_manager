@@ -27,4 +27,4 @@ app.use('/api', apiRouter);
 
 app.use('/', (req, res) => { res.send('yesso! you got our home page') });
 
-app.listen(3000, console.log `server successfully started. Listening on port 3000`);
+app.listen(process.env.PORT || 3000, console.log `server successfully started. Listening on port 3000`);

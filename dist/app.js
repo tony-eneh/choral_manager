@@ -36,6 +36,6 @@ app.use((0, _cors["default"])()); // console.log(apiRouter);
 
 app.use('/api', _api["default"]);
 app.use('/', function (req, res) {
-  res.send('yesso! you got our static page');
+  res.send('yesso! you got our home page');
 });
-app.listen(3000, console.log(_templateObject()));
+app.listen(process.env.PORT || 3000, console.log(_templateObject()));
