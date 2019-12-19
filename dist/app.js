@@ -34,6 +34,8 @@ var app = (0, _express["default"])(); //intergrate middlewares
 app.use((0, _bodyParser["default"])());
 app.use((0, _cors["default"])()); // console.log(apiRouter);
 
-app.use('/api', _api["default"]); // app.use('/', (req, res) => { res.send('yesso! you got our static page') });
-
+app.use('/api', _api["default"]);
+app.use('/', function (req, res) {
+  res.send('yesso! you got our static page');
+});
 app.listen(3000, console.log(_templateObject()));
