@@ -6,6 +6,7 @@
     "scripts": {
         "transpile": "babel src -d dist",
         "build": "npm run transpile",
+        "postinstall": "npm run build",
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node dist/app.js"
     },
