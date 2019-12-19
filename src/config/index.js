@@ -10,9 +10,9 @@ const mongoClient = mongodb.MongoClient;
 
 export const dbConnection = {
     connect: (done) => {
-        mongoClient.connect(MONGODB_URI, (err, db) => {
+        mongoClient.connect(MONGODB_URI, { useNewUrlParser: true }, (err, db) => {
             // if (err) done(err);
-            // connectedDB = db;
+            // connectedDB = db;s
             return done(err, db.db(DB_NAME));
         });
     }
