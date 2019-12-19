@@ -14,7 +14,7 @@ import cors from 'cors';
 // eslint-disable-next-line no-undef
 //.catch(err=>console.log`error: ${err}`);
 
-// console.log(`result.parsed.DB_URL_STRING ${result.parsed.DB_URL_STRING}`)
+// console.log(`result.parsed.MONGODB_URI ${result.parsed.MONGODB_URI}`)
 
 const app = express();
 

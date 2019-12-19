@@ -1,7 +1,7 @@
 import mongodb from 'mongodb';
 
-const DB_URL_STRING = process.env.DB_URL_STRING;
-console.log('DB_URL_STRING: '+process.env.DB_URL_STRING);
+const MONGODB_URI = process.env.MONGODB_URI;
+console.log('MONGODB_URI: '+process.env.MONGODB_URI);
 console.log`process.env ${process.env}`;
 let connectedDB;
 const mongoClient = mongodb.MongoClient;
@@ -10,7 +10,7 @@ const mongoClient = mongodb.MongoClient;
 
 export const dbConnection = {
     connect: (done) => {
-        mongoClient.connect(DB_URL_STRING, (err, db) => {
+        mongoClient.connect(MONGODB_URI, (err, db) => {
             // if (err) done(err);
             // connectedDB = db;
             return done(err, db.db(DB_NAME));
