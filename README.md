@@ -9,4 +9,21 @@ This webapp seeks to address both problems by:
   2. Having a dated song selection entity. Which is actually a collection of songs used for a particular event.
   3. keep track of number of selections for any particular song.
   
+  
+## Usage
+This is a RESTful API. It supports four http methods
+- GET (to fetch data), 
+- POST ( to create new data), 
+- PUT ( to modify existing data), 
+- DELETE ( to delete data).
+
+The following endpoints exists:
+- https://choir-file.herokuapp.com/api/selections
+- https://choir-file.herokuapp.com/api/songs
+- https://choir-file.herokuapp.com/api/files
+- https://choir-file.herokuapp.com/api/users
+
+You can access a single selection, song, file or user by attaching the resource id to the proper url.
+e.g. to fetch a fetch a song with id 5d7ba9f704d6ba2e73f24d93, send a GET request to https://choir-file.herokuapp.com/api/songs/5d7ba9f704d6ba2e73f24d93
+
 This project is very open to contributions. For further information, you may check  <a href= 'CONTRIBUTION.md'>CONTRIBUTION.md</a>
